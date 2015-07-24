@@ -1,0 +1,9 @@
+C:\Users\Esteban\Documents\Visual Studio 2012\Projects\WebAppVicharaEstebanGarzon\BRulesTestVichara\bin\Release\BRulesTestVichara.dll
+C:\Users\Esteban\Documents\Visual Studio 2012\Projects\WebAppVicharaEstebanGarzon\BRulesTestVichara\bin\Release\BRulesTestVichara.pdb
+C:\Users\Esteban\Documents\Visual Studio 2012\Projects\WebAppVicharaEstebanGarzon\BRulesTestVichara\bin\Release\ADataTestVichara.dll
+C:\Users\Esteban\Documents\Visual Studio 2012\Projects\WebAppVicharaEstebanGarzon\BRulesTestVichara\bin\Release\EntityFramework.dll
+C:\Users\Esteban\Documents\Visual Studio 2012\Projects\WebAppVicharaEstebanGarzon\BRulesTestVichara\bin\Release\ADataTestVichara.pdb
+C:\Users\Esteban\Documents\Visual Studio 2012\Projects\WebAppVicharaEstebanGarzon\BRulesTestVichara\bin\Release\EntityFramework.xml
+C:\Users\Esteban\Documents\Visual Studio 2012\Projects\WebAppVicharaEstebanGarzon\BRulesTestVichara\obj\Release\BRulesTestVichara.dll
+C:\Users\Esteban\Documents\Visual Studio 2012\Projects\WebAppVicharaEstebanGarzon\BRulesTestVichara\obj\Release\BRulesTestVichara.pdb
+C:\Users\Esteban\Documents\Visual Studio 2012\Projects\WebAppVicharaEstebanGarzon\BRulesTestVichara\obj\Release\BRulesTestVichara.csprojResolveAssemblyReference.cache

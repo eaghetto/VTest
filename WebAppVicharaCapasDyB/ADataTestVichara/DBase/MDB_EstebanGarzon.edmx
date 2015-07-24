@@ -1,0 +1,298 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Esteban_Garzon_DBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="Esteban_Garzon_DBModelStoreContainer">
+          <EntitySet Name="Contact" EntityType="Esteban_Garzon_DBModel.Store.Contact" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ContactType" EntityType="Esteban_Garzon_DBModel.Store.ContactType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Order" EntityType="Esteban_Garzon_DBModel.Store.Order" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Product" EntityType="Esteban_Garzon_DBModel.Store.Product" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Contact_ContactType" Association="Esteban_Garzon_DBModel.Store.FK_Contact_ContactType">
+            <End Role="ContactType" EntitySet="ContactType" />
+            <End Role="Contact" EntitySet="Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Contact" Association="Esteban_Garzon_DBModel.Store.FK_Order_Contact">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Contact1" Association="Esteban_Garzon_DBModel.Store.FK_Order_Contact1">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Product" Association="Esteban_Garzon_DBModel.Store.FK_Order_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ContactID" />
+          </Key>
+          <Property Name="ContactID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TypeID" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="Address" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="ContactType">
+          <Key>
+            <PropertyRef Name="ContactTypeID" />
+          </Key>
+          <Property Name="ContactTypeID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OrderDate" Type="datetime" />
+          <Property Name="CustContactID" Type="int" />
+          <Property Name="VendorContactID" Type="int" />
+          <Property Name="ProductID" Type="int" />
+          <Property Name="Quantity" Type="int" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK_Contact_ContactType">
+          <End Role="ContactType" Type="Esteban_Garzon_DBModel.Store.ContactType" Multiplicity="0..1" />
+          <End Role="Contact" Type="Esteban_Garzon_DBModel.Store.Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactType">
+              <PropertyRef Name="ContactTypeID" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Contact">
+          <End Role="Contact" Type="Esteban_Garzon_DBModel.Store.Contact" Multiplicity="0..1" />
+          <End Role="Order" Type="Esteban_Garzon_DBModel.Store.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ContactID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CustContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Contact1">
+          <End Role="Contact" Type="Esteban_Garzon_DBModel.Store.Contact" Multiplicity="0..1" />
+          <End Role="Order" Type="Esteban_Garzon_DBModel.Store.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ContactID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="VendorContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Product">
+          <End Role="Product" Type="Esteban_Garzon_DBModel.Store.Product" Multiplicity="0..1" />
+          <End Role="Order" Type="Esteban_Garzon_DBModel.Store.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Esteban_Garzon_DBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="Esteban_Garzon_DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Contact" EntityType="Esteban_Garzon_DBModel.Contact" />
+          <EntitySet Name="ContactType" EntityType="Esteban_Garzon_DBModel.ContactType" />
+          <EntitySet Name="Order" EntityType="Esteban_Garzon_DBModel.Order" />
+          <EntitySet Name="Product" EntityType="Esteban_Garzon_DBModel.Product" />
+          <AssociationSet Name="FK_Contact_ContactType" Association="Esteban_Garzon_DBModel.FK_Contact_ContactType">
+            <End Role="ContactType" EntitySet="ContactType" />
+            <End Role="Contact" EntitySet="Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Contact" Association="Esteban_Garzon_DBModel.FK_Order_Contact">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Contact1" Association="Esteban_Garzon_DBModel.FK_Order_Contact1">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Product" Association="Esteban_Garzon_DBModel.FK_Order_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ContactID" />
+          </Key>
+          <Property Name="ContactID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeID" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Address" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="ContactType" Relationship="Esteban_Garzon_DBModel.FK_Contact_ContactType" FromRole="Contact" ToRole="ContactType" />
+          <NavigationProperty Name="Order" Relationship="Esteban_Garzon_DBModel.FK_Order_Contact" FromRole="Contact" ToRole="Order" />
+          <NavigationProperty Name="Order1" Relationship="Esteban_Garzon_DBModel.FK_Order_Contact1" FromRole="Contact" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="ContactType">
+          <Key>
+            <PropertyRef Name="ContactTypeID" />
+          </Key>
+          <Property Name="ContactTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Contact" Relationship="Esteban_Garzon_DBModel.FK_Contact_ContactType" FromRole="ContactType" ToRole="Contact" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderDate" Type="DateTime" Precision="3" />
+          <Property Name="CustContactID" Type="Int32" />
+          <Property Name="VendorContactID" Type="Int32" />
+          <Property Name="ProductID" Type="Int32" />
+          <Property Name="Quantity" Type="Int32" />
+          <NavigationProperty Name="Contact" Relationship="Esteban_Garzon_DBModel.FK_Order_Contact" FromRole="Order" ToRole="Contact" />
+          <NavigationProperty Name="Contact1" Relationship="Esteban_Garzon_DBModel.FK_Order_Contact1" FromRole="Order" ToRole="Contact" />
+          <NavigationProperty Name="Product" Relationship="Esteban_Garzon_DBModel.FK_Order_Product" FromRole="Order" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Order" Relationship="Esteban_Garzon_DBModel.FK_Order_Product" FromRole="Product" ToRole="Order" />
+        </EntityType>
+        <Association Name="FK_Contact_ContactType">
+          <End Role="ContactType" Type="Esteban_Garzon_DBModel.ContactType" Multiplicity="0..1" />
+          <End Role="Contact" Type="Esteban_Garzon_DBModel.Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactType">
+              <PropertyRef Name="ContactTypeID" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Contact">
+          <End Role="Contact" Type="Esteban_Garzon_DBModel.Contact" Multiplicity="0..1" />
+          <End Role="Order" Type="Esteban_Garzon_DBModel.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ContactID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CustContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Contact1">
+          <End Role="Contact" Type="Esteban_Garzon_DBModel.Contact" Multiplicity="0..1" />
+          <End Role="Order" Type="Esteban_Garzon_DBModel.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ContactID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="VendorContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Product">
+          <End Role="Product" Type="Esteban_Garzon_DBModel.Product" Multiplicity="0..1" />
+          <End Role="Order" Type="Esteban_Garzon_DBModel.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Esteban_Garzon_DBModelStoreContainer" CdmEntityContainer="Esteban_Garzon_DBEntities">
+          <EntitySetMapping Name="Contact">
+            <EntityTypeMapping TypeName="Esteban_Garzon_DBModel.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactType">
+            <EntityTypeMapping TypeName="Esteban_Garzon_DBModel.ContactType">
+              <MappingFragment StoreEntitySet="ContactType">
+                <ScalarProperty Name="ContactTypeID" ColumnName="ContactTypeID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order">
+            <EntityTypeMapping TypeName="Esteban_Garzon_DBModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="CustContactID" ColumnName="CustContactID" />
+                <ScalarProperty Name="VendorContactID" ColumnName="VendorContactID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product">
+            <EntityTypeMapping TypeName="Esteban_Garzon_DBModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

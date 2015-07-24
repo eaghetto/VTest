@@ -1,0 +1,7 @@
+C:\Users\Esteban\Documents\Visual Studio 2012\Projects\WebAppVicharaEstebanGarzon\ADataTestVichara\bin\Release\ADataTestVichara.dll.config
+C:\Users\Esteban\Documents\Visual Studio 2012\Projects\WebAppVicharaEstebanGarzon\ADataTestVichara\bin\Release\ADataTestVichara.dll
+C:\Users\Esteban\Documents\Visual Studio 2012\Projects\WebAppVicharaEstebanGarzon\ADataTestVichara\bin\Release\ADataTestVichara.pdb
+C:\Users\Esteban\Documents\Visual Studio 2012\Projects\WebAppVicharaEstebanGarzon\ADataTestVichara\bin\Release\EntityFramework.dll
+C:\Users\Esteban\Documents\Visual Studio 2012\Projects\WebAppVicharaEstebanGarzon\ADataTestVichara\bin\Release\EntityFramework.xml
+C:\Users\Esteban\Documents\Visual Studio 2012\Projects\WebAppVicharaEstebanGarzon\ADataTestVichara\obj\Release\ADataTestVichara.dll
+C:\Users\Esteban\Documents\Visual Studio 2012\Projects\WebAppVicharaEstebanGarzon\ADataTestVichara\obj\Release\ADataTestVichara.pdb
